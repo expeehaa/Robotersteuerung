@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Windows;
+using Xceed.Wpf.Toolkit;
 
 namespace Robotersteuerung
 {
@@ -32,6 +33,7 @@ namespace Robotersteuerung
                 Parity = Parity.None,
                 WriteTimeout = 500,
                 ReadTimeout = 500,
+                ReceivedBytesThreshold = 4
             };
             serialPort.DataReceived += SerialPort_DataReceived;
             reloadCOMPorts();
@@ -65,7 +67,7 @@ namespace Robotersteuerung
 
         public void writeBytesToSerialPort()
         {
-            List<byte> bytes = new List<byte>() { 255, 0, (byte)slider.Value};
+            List<byte> bytes = new List<byte>() { 255, (byte)(numeric_motor.Value - 1d), (byte)slider.Value};
             if (!serialPort.IsOpen)
             {
                 toggleSerialPort();
@@ -76,7 +78,18 @@ namespace Robotersteuerung
 
         public void toggleSerialPort()
         {
-
+            if (serialPort.IsOpen)
+            {
+                serialPort.Close();
+                write("SerialPort closed!");
+                button_toggleSerialPort.Content = "Open serial port";
+            }
+            else
+            {
+                serialPort.Open();
+                write("SerialPort opened!");
+                button_toggleSerialPort.Content = "Close serial port";
+            }
         }
 
         #endregion
@@ -95,16 +108,7 @@ namespace Robotersteuerung
 
         private void btn_toggleSerialPort(object sender, RoutedEventArgs e)
         {
-            if (serialPort.IsOpen)
-            {
-                serialPort.Close();
-                write("SerialPort closed!");
-            }
-            else
-            {
-                serialPort.Open();
-                write("SerialPort opened!");
-            }
+            
         }
 
         private void MenuItem_ReloadComPorts(object sender, RoutedEventArgs e)

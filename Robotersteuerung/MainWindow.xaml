@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Robotersteuerung"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Robotersteuerung.MainWindow"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Controls="clr-namespace:Microsoft.Expression.Utility.Controls;assembly=Microsoft.Expression.Utility" x:Class="Robotersteuerung.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
@@ -34,19 +35,20 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="comPortBox" HorizontalAlignment="Stretch" Margin="10,3,10,3" VerticalAlignment="Top" Width="150"/>
-                <Slider Name="slider" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="4" VerticalAlignment="Stretch" Maximum="255" AutoToolTipPlacement="TopLeft" ValueChanged="slider_ValueChanged"/>
+                <Slider x:Name="slider" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="4" VerticalAlignment="Stretch" Maximum="255" AutoToolTipPlacement="TopLeft" ValueChanged="slider_ValueChanged"/>
                 <Expander x:Name="expander" Header="Settings" HorizontalAlignment="Stretch" Margin="5,0,25,0" Grid.Row="2" VerticalAlignment="Top" Height="Auto" Grid.RowSpan="3" Panel.ZIndex="2">
                     <Grid Background="#FFE5E5E5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="chckbox_autoSend" Content="Auto send (Console spam!)" IsChecked="False"/>
+                        <CheckBox x:Name="chckbox_autoSend" Content="Auto send (Console spam!)" IsChecked="False"/>
                     </Grid>
                 </Expander>
-                <Button Name="btn_writeBytes" Content="Send" HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Row="3" VerticalAlignment="Stretch" Click="btn_writeBytes_Click"/>
+                <Button x:Name="btn_writeBytes" Content="Send" HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Row="3" VerticalAlignment="Stretch" Click="btn_writeBytes_Click"/>
+                <xctk:DoubleUpDown Name="numeric_motor" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,3,10,3" Width="150" Value="1" Minimum="1" Maximum="8"/>
             </Grid>
-            <Button x:Name="button" Content="Open SerialPort" HorizontalAlignment="Stretch" Margin="43,32,36,48" VerticalAlignment="Stretch" Click="btn_toggleSerialPort" Grid.Row="1" Grid.Column="0"/>
-            <TextBox Name="textBox" Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" UseLayoutRounding="True" VerticalScrollBarVisibility="Auto" BorderThickness="3" Grid.RowSpan="2" Margin="10,0,0,0">
+            <Button Name="button_toggleSerialPort" Content="Open SerialPort" HorizontalAlignment="Stretch" Margin="43,32,36,48" VerticalAlignment="Stretch" Click="btn_toggleSerialPort" Grid.Row="1" Grid.Column="0"/>
+            <TextBox x:Name="textBox" Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" UseLayoutRounding="True" VerticalScrollBarVisibility="Auto" BorderThickness="3" Grid.RowSpan="2" Margin="10,0,0,0">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF8B8B8B" Offset="0"/>
