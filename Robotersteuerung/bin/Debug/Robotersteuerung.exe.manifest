@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Robotersteuerung.exe" size="17336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Robotersteuerung.exe" size="17848">
       <assemblyIdentity name="Robotersteuerung" version="1.0.0.0" publicKeyToken="CD9F10003F4E7D1C" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4hlnZAMrPzTxrqUF9ZmU7e4k1VZbmE+PzcUDNcmqYgo=</dsig:DigestValue>
+        <dsig:DigestValue>YIDLco1QYf7DScwj1zybCIhkEMu9sfOy1dppDRtcOR0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

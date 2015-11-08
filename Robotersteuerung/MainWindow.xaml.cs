@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Windows;
-using Xceed.Wpf.Toolkit;
 
 namespace Robotersteuerung
 {
@@ -18,12 +17,12 @@ namespace Robotersteuerung
         {
             InitializeComponent();
             write("Loading and configuring control elements");
-            loadUIControls();
+            loadControls();
         }
 
         #region helper methods
 
-        private void loadUIControls()
+        private void loadControls()
         {
             serialPort = new SerialPort()
             {
@@ -67,13 +66,13 @@ namespace Robotersteuerung
 
         public void writeBytesToSerialPort()
         {
-            List<byte> bytes = new List<byte>() { 255, (byte)(numeric_motor.Value - 1d), (byte)slider.Value};
+            List<byte> bytes = new List<byte>() { 255, (byte)(numeric_motor.Value - 1), (byte)slider.Value};
             if (!serialPort.IsOpen)
             {
                 toggleSerialPort();
             }
             serialPort.Write(bytes.ToArray(), 0, 3);
-            write("Attempting to change the angel of servomotor " + 0 + " to " + ((slider.Value) / (255d / 90d)) + "°");
+            write("Attempting to change the angel of servomotor " + numeric_motor.Value + " to " + ((slider.Value) / (255d / 90d)) + "°");
         }
 
         public void toggleSerialPort()
@@ -108,7 +107,7 @@ namespace Robotersteuerung
 
         private void btn_toggleSerialPort(object sender, RoutedEventArgs e)
         {
-            
+            toggleSerialPort();
         }
 
         private void MenuItem_ReloadComPorts(object sender, RoutedEventArgs e)
