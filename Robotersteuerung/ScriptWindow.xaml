@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Robotersteuerung"
         mc:Ignorable="d"
-        Title="ScriptWindow" Height="300" Width="300">
+        Title="Robotscript" Height="300" Width="300">
     <Grid>
-        
+        <Menu x:Name="menu" HorizontalAlignment="Stretch" Height="20" VerticalAlignment="Top">
+            <MenuItem x:Name="menuItem_header_data" Header="Datei">
+                <MenuItem x:Name="menuItem_close" Header="Close" Click="menuItem_close_Click"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

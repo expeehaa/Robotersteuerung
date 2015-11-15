@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Robotersteuerung
 {
@@ -19,9 +7,26 @@ namespace Robotersteuerung
     /// </summary>
     public partial class ScriptWindow : Window
     {
-        public ScriptWindow()
+        private ScriptExecutor se;
+
+        /// <summary>
+        /// Constructor for ScriptWindow.
+        /// </summary>
+        /// <param name="args">Filepath to robotscript.</param>
+        public ScriptWindow(params string[] args)
         {
+            
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Event handler is fired when the MenuItem "Close" is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuItem_close_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

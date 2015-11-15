@@ -16,12 +16,15 @@ namespace Robotersteuerung
 
         public SerialPort serialPort;
 
+        public static MainWindow instance;
+
         public MainWindow()
         {
             InitializeComponent();
             loadControls();
             Console.SetOut(new TextBoxWriter(textBox));
             Console.WriteLine("Loaded and configured control elements");
+            instance = this;
         }
 
         #region helper methods

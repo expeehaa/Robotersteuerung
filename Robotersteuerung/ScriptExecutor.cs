@@ -9,24 +9,38 @@ namespace Robotersteuerung
     class ScriptExecutor
     {
         private FileInfo file;
-        private MainWindow mw;
+        private ScriptWindow sw;
         private Thread thread;
         private string fileContent;
 
-        public ScriptExecutor(MainWindow mw, FileInfo fileinfo)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mw"></param>
+        /// <param name="fileinfo"></param>
+        public ScriptExecutor(ScriptWindow sw, FileInfo fileinfo)
         {
-            this.mw = mw;
+            this.sw = sw;
             file = fileinfo;
             getFileContent();
+            thread = new Thread(new ThreadStart(scriptexecutor));
         }
 
         #region GetSet
 
+        /// <summary>
+        /// Get the robotscripts FileInfo data
+        /// </summary>
+        /// <returns></returns>
         public FileInfo getFile()
         {
             return file;
         }
 
+        /// <summary>
+        /// Set the robotscripts FileInfo
+        /// </summary>
+        /// <param name="fileinfo"></param>
         public void setFile(FileInfo fileinfo)
         {
             file = fileinfo;
@@ -45,18 +59,31 @@ namespace Robotersteuerung
 
         #endregion
 
+        /// <summary>
+        /// Start executing the robotscript
+        /// </summary>
         public void executeScript()
         {
-            thread = new Thread(new ThreadStart(scriptexecutor));
-            
+            thread.Start();
         }
 
+        /// <summary>
+        /// Stop a running robotscript
+        /// </summary>
         public void stopScript()
         {
-
+            thread.Abort();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>true if script is running</returns>
+        public bool IsScriptRunning()
+        {
+            return thread.IsAlive;
+        }
+        
         private void scriptexecutor()
         {
             foreach (var s in fileContent.Split('\n'))
@@ -82,11 +109,11 @@ namespace Robotersteuerung
                         && 0 <= degrees && degrees <= 255)
                     {
                         List<byte> bytes = new List<byte>() { 255, (byte)motor, (byte)degrees };
-                        if (!mw.serialPort.IsOpen)
+                        if (!MainWindow.instance.serialPort.IsOpen)
                         {
-                            mw.toggleSerialPort();
+                            MainWindow.instance.toggleSerialPort();
                         }
-                        mw.serialPort.Write(bytes.ToArray(), 0, 3);
+                        MainWindow.instance.serialPort.Write(bytes.ToArray(), 0, 3);
                     }
                 }
 
