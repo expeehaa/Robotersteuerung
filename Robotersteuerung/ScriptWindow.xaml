@@ -12,5 +12,14 @@
                 <MenuItem x:Name="menuItem_close" Header="Close" Click="menuItem_close_Click"/>
             </MenuItem>
         </Menu>
+        <Grid Margin="0,20,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Name="scriptBox" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+
+        </Grid>
     </Grid>
 </Window>

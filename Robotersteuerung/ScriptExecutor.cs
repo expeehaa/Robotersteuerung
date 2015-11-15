@@ -46,6 +46,15 @@ namespace Robotersteuerung
             file = fileinfo;
             getFileContent();
         }
+
+        /// <summary>
+        /// Get the files robotscript as string.
+        /// </summary>
+        /// <returns></returns>
+        public string getFileContent()
+        {
+            return fileContent;
+        }
         #endregion
 
         #region Helpers
@@ -84,6 +93,26 @@ namespace Robotersteuerung
             return thread.IsAlive;
         }
         
+        /// <summary>
+        /// Pause the script if executed. Use resumeScript() to resume.
+        /// </summary>
+        public void pauseScript()
+        {
+            #pragma warning disable CS0618 // Typ oder Element ist veraltet
+            thread.Suspend();
+            #pragma warning restore CS0618 // Typ oder Element ist veraltet
+        }
+
+        /// <summary>
+        /// Resume script after pauseScript() has been called.
+        /// </summary>
+        public void resumeScript()
+        {
+            #pragma warning disable CS0618 // Typ oder Element ist veraltet
+            thread.Resume();
+            #pragma warning restore CS0618 // Typ oder Element ist veraltet
+        }
+
         private void scriptexecutor()
         {
             foreach (var s in fileContent.Split('\n'))
