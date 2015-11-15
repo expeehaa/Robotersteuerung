@@ -11,11 +11,12 @@
     <Grid>
         <Menu x:Name="menu" HorizontalAlignment="Stretch" Height="20" VerticalAlignment="Top">
             <MenuItem x:Name="menuItem_data" Header="Datei">
-                <MenuItem Header="Beenden" Click="MenuItem_beenden_Click"/>
+                <MenuItem Header="Load Script" Click="MenuItem_scriptload" />
+                <MenuItem Header="Close" Click="MenuItem_beenden_Click"/>
             </MenuItem>
             <MenuItem x:Name="menuItem_settings" Header="Einstellungen">
                 <MenuItem Header="Refresh COM-Ports" Click="MenuItem_ReloadComPorts"/>
-                <MenuItem Header="Auto send (Console spam!)" IsCheckable="True" IsChecked="False"/>
+                <MenuItem Name="chckbox_autoSend" Header="Auto send (Console spam!)" IsCheckable="True" IsChecked="False"/>
             </MenuItem>
         </Menu>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,20,0,0">

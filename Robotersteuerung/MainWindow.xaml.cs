@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Robotersteuerung.ConsoleHelpers;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Windows;
 
@@ -11,13 +14,14 @@ namespace Robotersteuerung
     public partial class MainWindow : Window
     {
 
-        SerialPort serialPort;
+        public SerialPort serialPort;
 
         public MainWindow()
         {
             InitializeComponent();
-            write("Loading and configuring control elements");
             loadControls();
+            Console.SetOut(new TextBoxWriter(textBox));
+            Console.WriteLine("Loaded and configured control elements");
         }
 
         #region helper methods
@@ -38,19 +42,12 @@ namespace Robotersteuerung
             reloadCOMPorts();
         }
 
-        public void write(string text, bool time = true)
-        {
-            DateTime t = DateTime.Now;
-            string timenow = "[" + t.ToLongTimeString() + "]";
-            textBox.Text += (time ? timenow : "") + text + "\n";
-        }
-
         public void reloadCOMPorts()
         {
-            write("Reloading COM-Ports");
+            Console.WriteLine("Reloading COM-Ports");
             if (SerialPort.GetPortNames().Length == 0)
             {
-                write("No COM-Port(s) found!");
+                Console.WriteLine("No COM-Port(s) found!");
             }
             else
             {
@@ -60,7 +57,7 @@ namespace Robotersteuerung
                     comPortBox.Items.Add(item);
                 }
                 comPortBox.SelectedIndex = 0;
-                write(SerialPort.GetPortNames().Length + " COM-Port(s) found");
+                Console.WriteLine(SerialPort.GetPortNames().Length + " COM-Port(s) found");
             }
         }
 
@@ -72,7 +69,7 @@ namespace Robotersteuerung
                 toggleSerialPort();
             }
             serialPort.Write(bytes.ToArray(), 0, 3);
-            write("Attempting to change the angel of servomotor " + numeric_motor.Value + " to " + ((slider.Value) / (255d / 90d)) + "°");
+            Console.WriteLine("Attempting to change the angel of servomotor " + numeric_motor.Value + " to " + ((slider.Value) / (255d / 90d)) + "°");
         }
 
         public void toggleSerialPort()
@@ -80,13 +77,13 @@ namespace Robotersteuerung
             if (serialPort.IsOpen)
             {
                 serialPort.Close();
-                write("SerialPort closed!");
+                Console.WriteLine("SerialPort closed!");
                 button_toggleSerialPort.Content = "Open serial port";
             }
             else
             {
                 serialPort.Open();
-                write("SerialPort opened!");
+                Console.WriteLine("SerialPort opened!");
                 button_toggleSerialPort.Content = "Close serial port";
             }
         }
@@ -97,7 +94,7 @@ namespace Robotersteuerung
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            write("Data received: " + serialPort.ReadLine());
+            Console.WriteLine("Data received: " + serialPort.ReadLine());
         }
 
         private void MenuItem_beenden_Click(object sender, RoutedEventArgs e)
@@ -117,7 +114,7 @@ namespace Robotersteuerung
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (chckbox_autoSend.IsChecked.Value)
+            if (chckbox_autoSend.IsChecked)
             {
                 writeBytesToSerialPort();
             }
@@ -126,6 +123,20 @@ namespace Robotersteuerung
         private void btn_writeBytes_Click(object sender, RoutedEventArgs e)
         {
             writeBytesToSerialPort();
+        }
+
+        private void MenuItem_scriptload(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                DefaultExt = "*.robotscript",
+                Multiselect = false,
+                Title = "Pick your robotscript!",
+                CheckFileExists = true,
+                CheckPathExists = true
+            };
+            ofd.ShowDialog();
+            //last activity point
         }
 
         #endregion
