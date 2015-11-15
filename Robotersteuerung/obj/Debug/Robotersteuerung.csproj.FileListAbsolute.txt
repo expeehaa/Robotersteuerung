@@ -34,3 +34,5 @@ C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Roboterste
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Debug\ScriptWindow.g.cs
+C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Debug\ScriptWindow.baml

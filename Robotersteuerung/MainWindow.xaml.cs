@@ -18,6 +18,8 @@ namespace Robotersteuerung
 
         public static MainWindow instance;
 
+        private ScriptWindow sw;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -132,14 +134,17 @@ namespace Robotersteuerung
         {
             OpenFileDialog ofd = new OpenFileDialog()
             {
-                DefaultExt = "*.robotscript",
+                Filter = "Robotscript files | *.robotscript",
                 Multiselect = false,
                 Title = "Pick your robotscript!",
                 CheckFileExists = true,
                 CheckPathExists = true
             };
-            ofd.ShowDialog();
-            //last activity point
+            
+            bool success = ofd.ShowDialog().Value;
+            if (!success) return;
+            sw = new ScriptWindow(new string[1] { ofd.FileName });
+            sw.Show();
         }
 
         #endregion

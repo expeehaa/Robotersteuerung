@@ -35,8 +35,8 @@ namespace Robotersteuerung.ConsoleHelpers
         {
             DateTime t = DateTime.Now;
             string timenow = "[" + t.ToLongTimeString() + "]";
-            tb.AppendText(timenow + value);
-            base.WriteLine(value);
+            tb.AppendText(timenow + value + "\n");
+            base.WriteLine(value + "\n");
         }
 
         public override Encoding Encoding

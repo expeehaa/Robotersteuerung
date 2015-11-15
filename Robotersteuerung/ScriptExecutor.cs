@@ -48,10 +48,10 @@ namespace Robotersteuerung
         }
 
         /// <summary>
-        /// Get the files robotscript as string.
+        /// Get the file's robotscript as string.
         /// </summary>
         /// <returns></returns>
-        public string getFileContent()
+        public string getrobotscript()
         {
             return fileContent;
         }
@@ -115,8 +115,9 @@ namespace Robotersteuerung
 
         private void scriptexecutor()
         {
-            foreach (var s in fileContent.Split('\n'))
+            foreach (var s in fileContent.Split('\n').ToList())
             {
+                sw.scriptBox.SelectedIndex = fileContent.Split('\n').ToList().IndexOf(s);
                 if (s.ToLower().StartsWith("turn"))
                 {
                     if (s.Split(' ').Length != 3) continue;
