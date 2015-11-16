@@ -1,8 +1,6 @@
-﻿using Microsoft.Win32;
-using Robotersteuerung.ConsoleHelpers;
+﻿using Robotersteuerung.ConsoleHelpers;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.IO.Ports;
 using System.Windows;
 
@@ -13,13 +11,15 @@ namespace Robotersteuerung
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public SerialPort serialPort;
 
         public static MainWindow instance;
 
         private ScriptWindow sw;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +27,7 @@ namespace Robotersteuerung
             Console.SetOut(new TextBoxWriter(textBox));
             Console.WriteLine("Loaded and configured control elements");
             instance = this;
+            sw = new ScriptWindow();
         }
 
         #region helper methods
@@ -104,6 +105,10 @@ namespace Robotersteuerung
 
         private void MenuItem_beenden_Click(object sender, RoutedEventArgs e)
         {
+            if (serialPort.IsOpen)
+            {
+                toggleSerialPort();
+            }
             Application.Current.Shutdown();
         }
 
@@ -130,21 +135,9 @@ namespace Robotersteuerung
             writeBytesToSerialPort();
         }
 
-        private void MenuItem_scriptload(object sender, RoutedEventArgs e)
+        private void MenuItem_open_scriptexecutor(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog()
-            {
-                Filter = "Robotscript files | *.robotscript",
-                Multiselect = false,
-                Title = "Pick your robotscript!",
-                CheckFileExists = true,
-                CheckPathExists = true
-            };
-            
-            bool success = ofd.ShowDialog().Value;
-            if (!success) return;
-            sw = new ScriptWindow(new string[1] { ofd.FileName });
-            sw.Show();
+            if (!sw.IsActive) sw.Show();
         }
 
         #endregion

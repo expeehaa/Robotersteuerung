@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Microsoft.Win32;
+using System.Windows;
 
 namespace Robotersteuerung
 {
@@ -8,29 +9,16 @@ namespace Robotersteuerung
     public partial class ScriptWindow : Window
     {
         private ScriptExecutor se;
-        
-        private bool HasScript
-        {
-            get
-            {
-                return HasScript;
-            }
 
-            set
-            {
-                HasScript = value;
-            }
-        }
+        private bool HasScript;
 
         /// <summary>
         /// Constructor for ScriptWindow.
         /// </summary>
         /// <param name="args">Filepath to robotscript.</param>
-        public ScriptWindow(params string[] args)
+        public ScriptWindow()
         {
             InitializeComponent();
-
-            if (args.Length > 0) newScriptExecutor(args[0]);
         }
 
 
@@ -38,12 +26,22 @@ namespace Robotersteuerung
         {
             se = new ScriptExecutor(this, new System.IO.FileInfo(filepath));
 
+            se.ThreadStateChangedEvent += Se_ThreadStateChangedEvent;
+
             scriptBox.Items.Clear();
             foreach (var s in se.getrobotscript().Split('\n'))
             {
                 scriptBox.Items.Add(s);
             }
             HasScript = true;
+        }
+
+        private void Se_ThreadStateChangedEvent(System.Threading.ThreadState e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                se_state.Content = "Script thread state: " + e.ToString();
+            });
         }
 
 
@@ -81,7 +79,7 @@ namespace Robotersteuerung
         {
             if (HasScript)
             {
-                se.pauseScript();
+                //se.pauseScript();
             }
         }
 
@@ -89,11 +87,25 @@ namespace Robotersteuerung
         {
             if (HasScript)
             {
-                se.resumeScript();
+                //se.resumeScript();
             }
         }
 
-        #endregion
+        private void menuItem_loadScript_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "Robotscript files | *.robotscript",
+                Multiselect = false,
+                Title = "Pick a robotscript!",
+                CheckFileExists = true,
+                CheckPathExists = true
+            };
 
+            bool success = ofd.ShowDialog().Value;
+            if (!success) return;
+            newScriptExecutor(ofd.FileName);
+        }
+        #endregion
     }
 }

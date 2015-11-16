@@ -13,6 +13,12 @@ namespace Robotersteuerung
         private Thread thread;
         private string fileContent;
 
+        private Timer timer;
+        private ThreadState thState;
+
+        public delegate void ThreadStateChanged(ThreadState e);
+        public event ThreadStateChanged ThreadStateChangedEvent;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -23,8 +29,10 @@ namespace Robotersteuerung
             this.sw = sw;
             file = fileinfo;
             getFileContent();
-            thread = new Thread(new ThreadStart(scriptexecutor));
+            
+            timer = new Timer(threadStateCheck, null, 0, 100);
         }
+        
 
         #region GetSet
 
@@ -66,6 +74,15 @@ namespace Robotersteuerung
             sr.Close();
         }
 
+        private void threadStateCheck(object state)
+        {
+            if (thread == null) return;
+            if (!thState.Equals(thread.ThreadState))
+            {
+                thState = thread.ThreadState;
+                ThreadStateChangedEvent(thState);
+            }
+        }
         #endregion
 
         /// <summary>
@@ -73,7 +90,16 @@ namespace Robotersteuerung
         /// </summary>
         public void executeScript()
         {
-            thread.Start();
+            try
+            {
+                thread = new Thread(new ThreadStart(scriptexecutor));
+                thState = thread.ThreadState;
+                thread.Start();
+            }
+            catch (ThreadStateException)
+            {
+                return;
+            }
         }
 
         /// <summary>
@@ -96,28 +122,31 @@ namespace Robotersteuerung
         /// <summary>
         /// Pause the script if executed. Use resumeScript() to resume.
         /// </summary>
-        public void pauseScript()
-        {
-            #pragma warning disable CS0618 // Typ oder Element ist veraltet
-            thread.Suspend();
-            #pragma warning restore CS0618 // Typ oder Element ist veraltet
-        }
+        //public void pauseScript()
+        //{
+        //    #pragma warning disable CS0618 // Typ oder Element ist veraltet
+        //    thread.Suspend();
+        //    #pragma warning restore CS0618 // Typ oder Element ist veraltet
+        //}
 
         /// <summary>
         /// Resume script after pauseScript() has been called.
         /// </summary>
-        public void resumeScript()
-        {
-            #pragma warning disable CS0618 // Typ oder Element ist veraltet
-            thread.Resume();
-            #pragma warning restore CS0618 // Typ oder Element ist veraltet
-        }
+        //public void resumeScript()
+        //{
+        //    #pragma warning disable CS0618 // Typ oder Element ist veraltet
+        //    thread.Resume();
+        //    #pragma warning restore CS0618 // Typ oder Element ist veraltet
+        //}
 
         private void scriptexecutor()
         {
             foreach (var s in fileContent.Split('\n').ToList())
             {
-                sw.scriptBox.SelectedIndex = fileContent.Split('\n').ToList().IndexOf(s);
+                sw.Dispatcher.Invoke(() =>
+                {
+                    sw.scriptBox.SelectedIndex = fileContent.Split('\n').ToList().IndexOf(s);
+                });
                 if (s.ToLower().StartsWith("turn"))
                 {
                     if (s.Split(' ').Length != 3) continue;
@@ -139,11 +168,14 @@ namespace Robotersteuerung
                         && 0 <= degrees && degrees <= 255)
                     {
                         List<byte> bytes = new List<byte>() { 255, (byte)motor, (byte)degrees };
-                        if (!MainWindow.instance.serialPort.IsOpen)
+                        MainWindow.instance.Dispatcher.Invoke(() =>
                         {
-                            MainWindow.instance.toggleSerialPort();
-                        }
-                        MainWindow.instance.serialPort.Write(bytes.ToArray(), 0, 3);
+                            if (!MainWindow.instance.serialPort.IsOpen)
+                            {
+                                MainWindow.instance.toggleSerialPort();
+                            }
+                            MainWindow.instance.serialPort.Write(bytes.ToArray(), 0, 3);
+                        });
                     }
                 }
 
@@ -161,9 +193,13 @@ namespace Robotersteuerung
                         continue;
                     }
 
+                    if (time <= 0) continue;
+
                     Thread.Sleep(time);
                 }
             }
         }
+        
+
     }
 }
