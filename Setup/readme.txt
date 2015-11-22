@@ -1,1 +1,0 @@
-Unzip the files in the same directory and run the installer ("setup.exe").

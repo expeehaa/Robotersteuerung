@@ -5,16 +5,21 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robotersteuerung", "Robotersteuerung\Robotersteuerung.csproj", "{96F543A4-8957-4D33-828C-D84721327666}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotersteuerungSetup", "Setup\Setup.vdproj", "{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{96F543A4-8957-4D33-828C-D84721327666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96F543A4-8957-4D33-828C-D84721327666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F543A4-8957-4D33-828C-D84721327666}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{96F543A4-8957-4D33-828C-D84721327666}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{96F543A4-8957-4D33-828C-D84721327666}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F543A4-8957-4D33-828C-D84721327666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}.Debug|Any CPU.ActiveCfg = Release
+		{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}.Release|Any CPU.ActiveCfg = Release
+		{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Robotersteuerung
 {
-    class ScriptExecutor
+    public class ScriptExecutor
     {
         private FileInfo file;
         private ScriptWindow sw;

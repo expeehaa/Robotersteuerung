@@ -1,4 +1,5 @@
 ﻿using Robotersteuerung.ConsoleHelpers;
+using Robotersteuerung.HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -11,7 +12,7 @@ namespace Robotersteuerung
     /// </summary>
     public partial class MainWindow : Window
     {
-        public SerialPort serialPort;
+        public CustomSerialPort serialPort;
 
         public static MainWindow instance;
 
