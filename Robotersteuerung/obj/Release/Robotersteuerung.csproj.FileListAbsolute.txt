@@ -21,7 +21,6 @@ C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Roboterste
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\bin\Release\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\bin\Release\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\bin\Release\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.csprojResolveAssemblyReference.cache
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\MainWindow.g.cs
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\ScriptWindow.g.cs
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\App.g.cs
