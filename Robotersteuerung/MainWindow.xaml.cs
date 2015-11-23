@@ -35,7 +35,7 @@ namespace Robotersteuerung
 
         private void loadControls()
         {
-            serialPort = new SerialPort()
+            serialPort = new CustomSerialPort()
             {
                 BaudRate = 9600,
                 DataBits = 8,
@@ -46,6 +46,8 @@ namespace Robotersteuerung
                 ReceivedBytesThreshold = 4
             };
             serialPort.DataReceived += SerialPort_DataReceived;
+            serialPort.OpenedEvent += SerialPort_OpenedEvent;
+            serialPort.ClosedEvent += SerialPort_ClosedEvent;
             reloadCOMPorts();
         }
 
@@ -81,18 +83,8 @@ namespace Robotersteuerung
 
         public void toggleSerialPort()
         {
-            if (serialPort.IsOpen)
-            {
-                serialPort.Close();
-                Console.WriteLine("SerialPort closed!");
-                button_toggleSerialPort.Content = "Open serial port";
-            }
-            else
-            {
-                serialPort.Open();
-                Console.WriteLine("SerialPort opened!");
-                button_toggleSerialPort.Content = "Close serial port";
-            }
+            if (serialPort.IsOpen) serialPort.Close();
+            else serialPort.Open();
         }
 
         #endregion
@@ -141,6 +133,23 @@ namespace Robotersteuerung
             if (!sw.IsActive) sw.Show();
         }
 
+        private void SerialPort_ClosedEvent()
+        {
+            Console.WriteLine("SerialPort closed!");
+            button_toggleSerialPort.Content = "Open serial port";
+        }
+
+        private void SerialPort_OpenedEvent()
+        {
+            Console.WriteLine("SerialPort opened!");
+            button_toggleSerialPort.Content = "Close serial port";
+        }
+
         #endregion
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            serialPort.Close();
+        }
     }
 }

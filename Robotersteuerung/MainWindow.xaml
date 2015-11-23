@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Robotersteuerung"
         xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Controls="clr-namespace:Microsoft.Expression.Utility.Controls;assembly=Microsoft.Expression.Utility" x:Class="Robotersteuerung.MainWindow"
         mc:Ignorable="d"
-        Title="Robot controller" Height="350" Width="525">
+        Title="Robot controller" Height="350" Width="525" Closed="Window_Closed">
     <Grid>
         <Menu x:Name="menu" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Top">
             <MenuItem x:Name="menuItem_data" Header="Datei">

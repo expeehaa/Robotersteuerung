@@ -126,6 +126,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ConsoleHelpers\TextBoxWriter.cs" />
+    <Compile Include="HelperClasses\CustomSerialPort.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ScriptExecutor.cs" />
     <Compile Include="ScriptWindow.xaml.cs">
       <DependentUpon>ScriptWindow.xaml</DependentUpon>

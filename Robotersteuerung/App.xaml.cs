@@ -15,7 +15,12 @@ namespace Robotersteuerung
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            
+            string args = "";
+            foreach (var s in e.Args)
+            {
+                args += s + "\n";
+            }
+            MessageBox.Show(args);
             base.OnStartup(e);
         }
     }

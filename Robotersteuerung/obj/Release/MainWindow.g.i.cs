@@ -166,12 +166,20 @@ namespace Robotersteuerung {
             switch (connectionId)
             {
             case 1:
-            this.menu = ((System.Windows.Controls.Menu)(target));
+            
+            #line 10 "..\..\MainWindow.xaml"
+            ((Robotersteuerung.MainWindow)(target)).Closed += new System.EventHandler(this.Window_Closed);
+            
+            #line default
+            #line hidden
             return;
             case 2:
-            this.menuItem_data = ((System.Windows.Controls.MenuItem)(target));
+            this.menu = ((System.Windows.Controls.Menu)(target));
             return;
             case 3:
+            this.menuItem_data = ((System.Windows.Controls.MenuItem)(target));
+            return;
+            case 4:
             
             #line 14 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.MenuItem)(target)).Click += new System.Windows.RoutedEventHandler(this.MenuItem_open_scriptexecutor);
@@ -179,7 +187,7 @@ namespace Robotersteuerung {
             #line default
             #line hidden
             return;
-            case 4:
+            case 5:
             
             #line 15 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.MenuItem)(target)).Click += new System.Windows.RoutedEventHandler(this.MenuItem_beenden_Click);
@@ -187,10 +195,10 @@ namespace Robotersteuerung {
             #line default
             #line hidden
             return;
-            case 5:
+            case 6:
             this.menuItem_settings = ((System.Windows.Controls.MenuItem)(target));
             return;
-            case 6:
+            case 7:
             
             #line 18 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.MenuItem)(target)).Click += new System.Windows.RoutedEventHandler(this.MenuItem_ReloadComPorts);
@@ -198,13 +206,13 @@ namespace Robotersteuerung {
             #line default
             #line hidden
             return;
-            case 7:
+            case 8:
             this.chckbox_autoSend = ((System.Windows.Controls.MenuItem)(target));
             return;
-            case 8:
+            case 9:
             this.comPortBox = ((System.Windows.Controls.ComboBox)(target));
             return;
-            case 9:
+            case 10:
             this.slider = ((System.Windows.Controls.Slider)(target));
             
             #line 40 "..\..\MainWindow.xaml"
@@ -213,7 +221,7 @@ namespace Robotersteuerung {
             #line default
             #line hidden
             return;
-            case 10:
+            case 11:
             this.btn_writeBytes = ((System.Windows.Controls.Button)(target));
             
             #line 41 "..\..\MainWindow.xaml"
@@ -222,10 +230,10 @@ namespace Robotersteuerung {
             #line default
             #line hidden
             return;
-            case 11:
+            case 12:
             this.numeric_motor = ((Xceed.Wpf.Toolkit.IntegerUpDown)(target));
             return;
-            case 12:
+            case 13:
             this.button_toggleSerialPort = ((System.Windows.Controls.Button)(target));
             
             #line 44 "..\..\MainWindow.xaml"
@@ -234,7 +242,7 @@ namespace Robotersteuerung {
             #line default
             #line hidden
             return;
-            case 13:
+            case 14:
             this.textBox = ((System.Windows.Controls.TextBox)(target));
             return;
             }
