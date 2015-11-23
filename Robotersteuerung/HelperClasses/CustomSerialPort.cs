@@ -16,8 +16,8 @@ namespace Robotersteuerung.HelperClasses
         {
             try
             {
-                base.Close();
                 ClosedEvent();
+                base.Close();
             }
             catch (Exception e)
             {
@@ -30,8 +30,8 @@ namespace Robotersteuerung.HelperClasses
         {
             try
             {
-                base.Open();
                 OpenedEvent();
+                base.Open();
             }
             catch (Exception e)
             {

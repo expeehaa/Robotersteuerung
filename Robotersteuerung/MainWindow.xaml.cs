@@ -16,7 +16,7 @@ namespace Robotersteuerung
 
         public static MainWindow instance;
 
-        private ScriptWindow sw;
+        public ScriptWindow sw;
 
         /// <summary>
         /// Constructor
@@ -145,11 +145,14 @@ namespace Robotersteuerung
             button_toggleSerialPort.Content = "Close serial port";
         }
 
-        #endregion
-
         private void Window_Closed(object sender, EventArgs e)
         {
             serialPort.Close();
+            Application.Current.Shutdown();
         }
+
+        #endregion
+
+
     }
 }
