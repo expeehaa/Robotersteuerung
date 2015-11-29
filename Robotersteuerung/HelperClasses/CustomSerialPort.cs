@@ -38,5 +38,16 @@ namespace Robotersteuerung.HelperClasses
                 MessageBox.Show(e.Message);
             }
         }
+
+        public new void Write(byte[] buffer, int offset, int count)
+        {
+            string bytesToWrite = "";
+            foreach (var _byte in buffer)
+            {
+                bytesToWrite += _byte + ", ";
+            }
+            Console.WriteLine("The following data was sent: " + bytesToWrite);
+            base.Write(buffer, offset, count);
+        }
     }
 }

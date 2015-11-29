@@ -56,7 +56,7 @@ namespace Robotersteuerung
         private void menuItem_close_Click(object sender, RoutedEventArgs e)
         {
             se.stopScript();
-            Close();
+            Visibility = Visibility.Collapsed;
         }
 
         private void btn_startScript_Click(object sender, RoutedEventArgs e)
