@@ -43,7 +43,8 @@ namespace Robotersteuerung
                 Parity = Parity.None,
                 WriteTimeout = 500,
                 ReadTimeout = 500,
-                ReceivedBytesThreshold = 4
+                ReceivedBytesThreshold = 4,
+                Handshake = Handshake.None
             };
             serialPort.DataReceived += SerialPort_DataReceived;
             serialPort.OpenedEvent += SerialPort_OpenedEvent;

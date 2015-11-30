@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\App.xaml
-2-765690772
+3-786593584
 
-13850049081
+14-1156380687
 25719356613
-MainWindow.xaml;ScriptWindow.xaml;
+MainWindow.xaml;ScriptWindow.xaml;SerialPortSettingsWindow.xaml;
 
 False
 
