@@ -2,6 +2,7 @@
 using Robotersteuerung.HelperClasses;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Windows;
 
@@ -73,20 +74,43 @@ namespace Robotersteuerung
 
         public void writeBytesToSerialPort()
         {
-            //List<byte> bytes = new List<byte>() { 255, (byte)(numeric_motor.Value.Value - 1), (byte)slider.Value};
-            byte[] bytes = new byte[3];
-            bytes[0] = 255;
-            bytes[1] = (byte)(numeric_motor.Value.Value - 1);
-            bytes[2] = (byte)slider.Value;
-            if (!serialPort.IsOpen) serialPort.Open();
-            serialPort.Write(bytes, 0, 3);
-            Console.WriteLine("Attempting to change the angel of servomotor " + numeric_motor.Value + " to " + ((slider.Value) / (255d / 90d)) + "°");
+            try
+            {
+                //List<byte> bytes = new List<byte>() { 255, (byte)(numeric_motor.Value.Value - 1), (byte)slider.Value};
+                byte[] bytes = new byte[3];
+                bytes[0] = 255;
+                bytes[1] = (byte)(numeric_motor.Value.Value - 1);
+                bytes[2] = (byte)slider.Value;
+                if (!serialPort.IsOpen) serialPort.Open();
+                serialPort.Write(bytes, 0, 3);
+                Console.WriteLine("Attempting to change the angel of servomotor " + numeric_motor.Value + " to " + ((slider.Value) / (255d / 90d)) + "°");
+
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine("Can't open SerialPort: " + e.Message);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Can't open SerialPort: " + e.Message);
+            }
         }
 
         public void toggleSerialPort()
         {
-            if (serialPort.IsOpen) serialPort.Close();
-            else serialPort.Open();
+            try
+            {
+                if (serialPort.IsOpen) serialPort.Close();
+                else serialPort.Open();
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine("Can't open SerialPort: " + e.Message);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("Can't open SerialPort: " + e.Message);
+            }
         }
 
         #endregion

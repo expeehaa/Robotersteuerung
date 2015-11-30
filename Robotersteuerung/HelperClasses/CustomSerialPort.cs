@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO.Ports;
 using System.Windows;
+using System.Linq;
 
 namespace Robotersteuerung.HelperClasses
 {
@@ -31,6 +32,11 @@ namespace Robotersteuerung.HelperClasses
             try
             {
                 OpenedEvent();
+                PortName = (string)MainWindow.instance.comPortBox.SelectedItem;
+                if (!GetPortNames().Contains(PortName))
+                {
+                    throw new ArgumentException("The PortName '" + PortName + "' is invalid.");
+                }
                 base.Open();
             }
             catch (Exception e)
