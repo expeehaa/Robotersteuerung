@@ -172,7 +172,7 @@ namespace Robotersteuerung
 
         private void SerialPort_OpenedEvent()
         {
-            Console.WriteLine("SerialPort opened!");
+            Console.WriteLine("SerialPort with portname '" + serialPort.PortName + "' opened!");
             button_toggleSerialPort.Content = "Close serial port";
         }
 
