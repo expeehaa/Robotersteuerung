@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Robotersteuerung"
         mc:Ignorable="d"
-        Title="SerialPortSettingsWindow" Height="300" Width="300">
+        Title="SerialPortSettingsWindow" Height="351.818" Width="278.182">
     <Grid>
-        
+
     </Grid>
 </Window>

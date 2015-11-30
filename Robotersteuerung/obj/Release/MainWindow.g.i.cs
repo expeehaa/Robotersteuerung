@@ -211,6 +211,12 @@ namespace Robotersteuerung {
             return;
             case 9:
             this.comPortBox = ((System.Windows.Controls.ComboBox)(target));
+            
+            #line 39 "..\..\MainWindow.xaml"
+            this.comPortBox.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.comPortBox_SelectionChanged);
+            
+            #line default
+            #line hidden
             return;
             case 10:
             this.slider = ((System.Windows.Controls.Slider)(target));
