@@ -37,7 +37,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <ComboBox x:Name="comPortBox" HorizontalAlignment="Stretch" Margin="10,3,10,3" VerticalAlignment="Top" Width="150" SelectionChanged="comPortBox_SelectionChanged"/>
-                <Slider x:Name="slider" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="4" VerticalAlignment="Stretch" Maximum="255" AutoToolTipPlacement="TopLeft" ValueChanged="slider_ValueChanged"/>
+                <Slider x:Name="slider" HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="4" VerticalAlignment="Stretch" Maximum="254" AutoToolTipPlacement="TopLeft" ValueChanged="slider_ValueChanged"/>
                 <Button x:Name="btn_writeBytes" Content="Send" HorizontalAlignment="Stretch" Margin="5,5,5,5" Grid.Row="3" VerticalAlignment="Stretch" Click="btn_writeBytes_Click"/>
                 <xctk:IntegerUpDown Name="numeric_motor" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,3,10,3" Width="150" Value="1" Minimum="1" Maximum="8"/>
             </Grid>

@@ -1,7 +1,6 @@
 ﻿using Robotersteuerung.ConsoleHelpers;
 using Robotersteuerung.HelperClasses;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
 using System.Windows;
@@ -26,9 +25,9 @@ namespace Robotersteuerung
         {
             InitializeComponent();
             loadControls();
+            instance = this;
             Console.SetOut(new TextBoxWriter(textBox));
             Console.WriteLine("Loaded and configured control elements");
-            instance = this;
             sw = new ScriptWindow();
         }
 
@@ -83,8 +82,6 @@ namespace Robotersteuerung
                 bytes[2] = (byte)slider.Value;
                 if (!serialPort.IsOpen) serialPort.Open();
                 serialPort.Write(bytes, 0, 3);
-                Console.WriteLine("Attempting to change the angel of servomotor " + numeric_motor.Value + " to " + ((slider.Value) / (255d / 90d)) + "°");
-
             }
             catch (ArgumentException e)
             {

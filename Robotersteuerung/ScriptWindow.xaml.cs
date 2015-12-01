@@ -12,6 +12,8 @@ namespace Robotersteuerung
 
         private bool HasScript;
 
+        public static ScriptWindow instance;
+
         /// <summary>
         /// Constructor for ScriptWindow.
         /// </summary>
@@ -19,6 +21,7 @@ namespace Robotersteuerung
         public ScriptWindow()
         {
             InitializeComponent();
+            instance = this;
         }
 
 
@@ -111,6 +114,7 @@ namespace Robotersteuerung
         {
             e.Cancel = true;
             Visibility = Visibility.Collapsed;
+            if (se != null) se.stopScript();
         }
 
         #endregion

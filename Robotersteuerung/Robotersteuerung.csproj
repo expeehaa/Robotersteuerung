@@ -130,6 +130,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScriptExecutor.cs" />
+    <Compile Include="ScriptExecutorCommands\ScriptExecutorCommand.cs" />
+    <Compile Include="ScriptExecutorCommands\SleepCommand.cs" />
+    <Compile Include="ScriptExecutorCommands\TurnCommand.cs" />
     <Compile Include="ScriptWindow.xaml.cs">
       <DependentUpon>ScriptWindow.xaml</DependentUpon>
     </Compile>

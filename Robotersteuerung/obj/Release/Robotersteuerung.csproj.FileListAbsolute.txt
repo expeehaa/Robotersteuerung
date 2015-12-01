@@ -37,3 +37,4 @@ C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Roboterste
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.pdb
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\SerialPortSettingsWindow.g.cs
 C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\SerialPortSettingsWindow.baml
+C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.csprojResolveAssemblyReference.cache

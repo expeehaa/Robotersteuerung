@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Linq;
+using Robotersteuerung.ScriptExecutorCommands;
 
 namespace Robotersteuerung
 {
@@ -141,61 +142,30 @@ namespace Robotersteuerung
 
         private void scriptexecutor()
         {
+            int indexcounter = 0;
             foreach (var s in fileContent.Split('\n').ToList())
             {
+                indexcounter++;
                 sw.Dispatcher.Invoke(() =>
                 {
-                    sw.scriptBox.SelectedIndex = fileContent.Split('\n').ToList().IndexOf(s);
+                    sw.scriptBox.SelectedIndex = indexcounter;
                 });
-                if (s.ToLower().StartsWith("turn"))
+
+                if (s.Split(' ').Length < 1) continue;
+
+                string cmd = s.Split(' ')[0].ToLower();
+                string[] args = s.Split(' ').Except(new List<string>() { cmd }).ToArray();
+
+
+                try
                 {
-                    if (s.Split(' ').Length != 3) continue;
-                    List<string> slist = s.Split(' ').ToList();
+                    if (cmd.Equals("turn")) new TurnCommand(cmd, args).run();
 
-                    int motor, degrees;
-                    try
-                    {
-                        motor = int.Parse(slist[1]);
-                        degrees = int.Parse(slist[2]);
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-
-                    if (slist[0] == "turn"
-                        && 0 <= motor && motor <= 7
-                        && 0 <= degrees && degrees <= 255)
-                    {
-                        List<byte> bytes = new List<byte>() { 255, (byte)motor, (byte)degrees };
-                        MainWindow.instance.Dispatcher.Invoke(() =>
-                        {
-                            if (!MainWindow.instance.serialPort.IsOpen)
-                            {
-                                MainWindow.instance.toggleSerialPort();
-                            }
-                            MainWindow.instance.serialPort.Write(bytes.ToArray(), 0, 3);
-                        });
-                    }
+                    else if (cmd.Equals("sleep")) new SleepCommand(cmd, args).run();
                 }
-
-                else if (s.ToLower().StartsWith("sleep"))
+                catch (Exception e)
                 {
-                    if (s.Split(' ').Length != 2) continue;
-
-                    int time;
-                    try
-                    {
-                        time = int.Parse(s.Split(' ')[1]);
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-
-                    if (time <= 0) continue;
-
-                    Thread.Sleep(time);
+                    Console.WriteLine("Exception occured during execution of a robotscript: " + e.Message);
                 }
             }
         }
