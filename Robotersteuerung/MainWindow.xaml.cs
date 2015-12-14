@@ -181,9 +181,9 @@ namespace Robotersteuerung
 
         private void comPortBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            var comport = (string)comPortBox.SelectedItem;
-            if (comport.Length == 0) return;
-            serialPort.PortName = comport;
+            //var comport = (string)comPortBox.SelectedItem;
+            //if (comport.Length == 0) return;
+            //serialPort.PortName = comport;
         }
 
         #endregion
