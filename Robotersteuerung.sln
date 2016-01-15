@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robotersteuerung", "Robotersteuerung\Robotersteuerung.csproj", "{96F543A4-8957-4D33-828C-D84721327666}"
+	ProjectSection(ProjectDependencies) = postProject
+		{65943F86-0908-435C-9BBD-E731128B5E37} = {65943F86-0908-435C-9BBD-E731128B5E37}
+	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RobotersteuerungSetup", "Setup\Setup.vdproj", "{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robotscript", "Robotscript\Robotscript.csproj", "{65943F86-0908-435C-9BBD-E731128B5E37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +25,10 @@ Global
 		{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}.Debug|Any CPU.ActiveCfg = Release
 		{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}.Release|Any CPU.ActiveCfg = Release
 		{82ADB6BA-F62E-44EC-85BE-0F2F79BF428B}.Release|Any CPU.Build.0 = Release
+		{65943F86-0908-435C-9BBD-E731128B5E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65943F86-0908-435C-9BBD-E731128B5E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65943F86-0908-435C-9BBD-E731128B5E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65943F86-0908-435C-9BBD-E731128B5E37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

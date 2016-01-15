@@ -41,3 +41,15 @@ C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Roboterste
 C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\bin\Release\Robotersteuerung.exe.config
 C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.exe
 C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.pdb
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.csprojResolveAssemblyReference.cache
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\MainWindow.g.cs
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\ScriptWindow.g.cs
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\App.g.cs
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung_MarkupCompile.cache
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung_MarkupCompile.lref
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\MainWindow.baml
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\ScriptWindow.baml
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.g.resources
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.Properties.Resources.resources
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\Robotersteuerung.csproj.GenerateResource.Cache
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\output\Release\Robotersteuerung.exe.config

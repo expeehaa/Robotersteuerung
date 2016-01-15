@@ -1,6 +1,7 @@
 ﻿using Robotersteuerung.ConsoleHelpers;
 using Robotersteuerung.HelperClasses;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Ports;
 using System.Windows;
@@ -16,7 +17,7 @@ namespace Robotersteuerung
 
         public static MainWindow instance;
 
-        public ScriptWindow sw;
+        public Process sw;
 
         /// <summary>
         /// Constructor
@@ -28,7 +29,14 @@ namespace Robotersteuerung
             instance = this;
             Console.SetOut(new TextBoxWriter(textBox));
             Console.WriteLine("Loaded and configured control elements");
-            sw = new ScriptWindow();
+            sw = new Process()
+            {
+                EnableRaisingEvents = true,
+                StartInfo = new ProcessStartInfo()
+                {
+                    FileName = null
+                }
+            };
         }
 
         #region helper methods
@@ -158,7 +166,7 @@ namespace Robotersteuerung
 
         private void MenuItem_open_scriptexecutor(object sender, RoutedEventArgs e)
         {
-            if (!sw.IsActive) sw.Show();
+            
         }
 
         private void SerialPort_ClosedEvent()

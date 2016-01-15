@@ -51,7 +51,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\output\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -129,16 +129,6 @@
     <Compile Include="HelperClasses\CustomSerialPort.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ScriptExecutor.cs" />
-    <Compile Include="ScriptExecutorCommands\ScriptExecutorCommand.cs" />
-    <Compile Include="ScriptExecutorCommands\SleepCommand.cs" />
-    <Compile Include="ScriptExecutorCommands\TurnCommand.cs" />
-    <Compile Include="ScriptWindow.xaml.cs">
-      <DependentUpon>ScriptWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SerialPortSettingsWindow.xaml.cs">
-      <DependentUpon>SerialPortSettingsWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,14 +141,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ScriptWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SerialPortSettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

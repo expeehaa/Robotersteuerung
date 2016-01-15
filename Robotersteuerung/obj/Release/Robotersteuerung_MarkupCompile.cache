@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\obj\Release\
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\obj\Release\
 Robotersteuerung
 none
 false
-TRACE
-C:\Users\Lukas\Documents\Visual Studio 2013\Projects\Robotersteuerung\Robotersteuerung\App.xaml
-3-786593584
+CODE_ANALYSIS;TRACE
+C:\Users\Lukas\Documents\Visual Studio 2015\Projects\Robotersteuerung\Robotersteuerung\App.xaml
+11151548125
 
-13-1653369355
-25719356613
-MainWindow.xaml;ScriptWindow.xaml;SerialPortSettingsWindow.xaml;
+7208118007
+25-936013690
+MainWindow.xaml;
 
-False
+True
 

@@ -132,7 +132,7 @@ namespace Robotersteuerung {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Robotersteuerung;component/scriptwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Robotscript;component/scriptwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\ScriptWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

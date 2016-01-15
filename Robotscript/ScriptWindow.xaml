@@ -1,0 +1,49 @@
+﻿<Window x:Class="Robotersteuerung.ScriptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Robotersteuerung"
+        mc:Ignorable="d"
+        Title="Robotscript" Height="300" Width="400" UseLayoutRounding="True" Closing="Window_Closing">
+    <Grid>
+        <Menu x:Name="menu" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Top">
+            <MenuItem x:Name="menuItem_header_data" Header="Datei">
+                <MenuItem x:Name="menuItem_loadScript" Header="Load robotscript" Click="menuItem_loadScript_Click"/>
+                <MenuItem x:Name="menuItem_close" Header="Close" Click="menuItem_close_Click"/>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="0,25,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Name="scriptBox" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="3" UseLayoutRounding="False"/>
+            <Grid Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Label Name="se_state" Content="" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" Grid.Row="0" VerticalContentAlignment="Center" UseLayoutRounding="False" HorizontalContentAlignment="Center" />
+
+                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" Width="195" Height="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button Name="btn_startScript" Content="Start" Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" Click="btn_startScript_Click"/>
+                    <Button Name="btn_stopScript" Content="Stop" Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" Click="btn_stopScript_Click"/>
+                    <Button Name="btn_pauseScript" Content="Pause" Grid.Column="0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" Click="btn_pauseScript_Click" IsEnabled="False"/>
+                    <Button Name="btn_resumeScript" Content="Resume" Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5" Click="btn_resumeScript_Click" IsEnabled="False"/>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
