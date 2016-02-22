@@ -185,6 +185,11 @@ namespace Robotersteuerung
             //if (comport.Length == 0) return;
             //serialPort.PortName = comport;
         }
+        
+        private void MenuItem_open_projectr(object sender, RoutedEventArgs e)
+        {
+            new ProjectR().Show();
+        }
 
         #endregion
     }

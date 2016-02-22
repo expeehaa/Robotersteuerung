@@ -17,7 +17,6 @@ namespace Robotersteuerung
         /// <summary>
         /// Constructor for ScriptWindow.
         /// </summary>
-        /// <param name="args">Filepath to robotscript.</param>
         public ScriptWindow()
         {
             InitializeComponent();

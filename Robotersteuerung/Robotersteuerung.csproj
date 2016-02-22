@@ -129,6 +129,9 @@
     <Compile Include="HelperClasses\CustomSerialPort.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ProjectR.xaml.cs">
+      <DependentUpon>ProjectR.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ScriptExecutor.cs" />
     <Compile Include="ScriptExecutorCommands\ScriptExecutorCommand.cs" />
     <Compile Include="ScriptExecutorCommands\SleepCommand.cs" />
@@ -151,6 +154,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProjectR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ScriptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

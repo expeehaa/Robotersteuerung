@@ -12,6 +12,7 @@
         <Menu x:Name="menu" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Top">
             <MenuItem x:Name="menuItem_data" Header="Datei">
                 <MenuItem Header="Open Script executor" Click="MenuItem_open_scriptexecutor" />
+                <MenuItem Header="Open ProjectR" Click="MenuItem_open_projectr"/>
                 <MenuItem Header="Close" Click="MenuItem_beenden_Click"/>
             </MenuItem>
             <MenuItem x:Name="menuItem_settings" Header="Einstellungen">
